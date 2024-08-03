@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree</title>
+</head>
+<body>
+    <div id="tree"></div>
+    <script src="familytree.js"></script>
+    <script>
+    let family = new FamilyTree("#tree", {
+        nodeBinding: {
+            field_0: "name"
+        },
+        nodes: [
+            { id: 1, pids: [2], name: "Jamuna Devi Aryal", gender: "female" },
+            { id: 2, pids: [1], name: "Khemananda Aryal", gender: "male" },
+            { id: 3, mid: 1, fid: 2, pids: [4], name: "Krishna Aryal", gender: "male" },
+            { id: 4, pids: [3], name: "Bishnu Aryal", gender: "female" },
+            { id: 5, mid: 4, fid: 3, pids: [9], name: "Pratima Aryal", gender: "female" },
+            { id: 6, mid: 4, fid: 3, pids: [10], name: "Shankar Aryal", gender: "male" },
+            { id: 7, mid: 4, fid: 3, pids: [0], name: "Pratibha Aryal", gender: "female" },
+            { id: 8, mid: 4, fid: 3, pids: [0], name: "Pratigya Aryal", gender: "female" },
+            { id: 9, pids: [5], name: "Pramesh Acharya", gender: "male" },
+            { id: 10, pids: [6], name: "Pooja Aryal", gender: "female" },
+            { id: 11, mid: 5, fid: 9, name: "Pranaya Acharya", gender: "male" },
+            { id: 12, mid: 5, fid: 9, name: "Prayushi Acharya", gender: "female" },
+            { id: 13, mid: 10, fid: 6, name: "Samanyu Aryal", gender: "male" },
+            /* TODO: Need to didi's family hirarchy tree. */
+            { id: 14, mid: 1, fid: 2, pids: [15], name: "Gopal Prasad Aryal", gender: "male" },
+            { id: 15, pids: [14], name: "Sangeeta Gautam Aryal", gender: "female" },
+            { id: 16, mid: 15, fid: 14, pids: [18], name: "BasuDev Aryal", gender: "male" },
+            { id: 17, mid: 15, fid: 14, name: "Nikhil Aryal", gender: "male" },
+            { id: 18, pids: [16], name: "Bibita Gyawali Aryal", gender: "female" },
+            { id: 19, mid: 18, fid: 16, name: "Vasudha Aryal", gender: "female" }
+        ]  
+    });
+    </script>
+</body>
+</html>
