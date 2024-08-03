@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lagid dynasty</title>
+    <link rel="icon" type="image/svg+xml" sizes="any" href="logo.svg"/>
+    <script src="./lignage.js"></script>
+    <style>
+      #lignage {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <svg id="lignage">
+      <style>
+        .pharaoh rect {
+          fill: gold;
+        }
+        .pharaoh text {
+          fill: white;
+        }
+        .dashed {
+          stroke-dasharray: 4 2;
+        }
+      </style>
+    </svg>
+    <div> Link to another <a href="/">example</a>. </div>
+    <script>
+      const nodes = [
+        {id: "lagos", name: "Lagos"},
+        {id: "arsinoeMacedon", name: "Arsinoe", text: "of Macedon", spouse: "lagos"},
+        {id: "ptolemaiosI", name: "PTOLEMAIOS I", text: "Soter", parent: "arsinoeMacedon", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_Α΄_Σωτήρ"},
+        {id: "eurydike", name: "Eurydike", spouse: "ptolemaiosI"},
+        {id: "berenikeI", name: "Berenike I", spouse: "ptolemaiosI"},
+        {id: "menelaos", name: "Menelaos", parent: "arsinoeMacedon"},
+        {id: "lysandra", name: "Lysandra", parent: "eurydike"},
+        {id: "ptolemais", name: "Ptolemais", parent: "eurydike"},
+        {id: "ptolemaiosKeraunos", name: "Ptolemaios", text: "Keraunos", parent: "eurydike"},
+        {id: "meleager", name: "Meleager", parent: "eurydike"},
+        {id: "arsinoeII", name: "Arsinoe II", text: "Philadelphos", parent: "berenikeI"},
+        {id: "philotera", name: "Philotera", parent: "berenikeI"},
+        {id: "ptolemaiosII", name: "PTOLEMAIOS II", text: "Philadelphos", parent: "berenikeI", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_Β΄_Φιλάδελφος"},
+        {id: "arsinoeI", name: "Arsinoe I", spouse: "ptolemaiosII"},
+        {id: "ptolemaiosIII", name: "PTOLEMAIOS III", text: "Euergetes", parent: "arsinoeI", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_Γ΄_Ευεργέτης"},
+        {id: "lysimachos", name: "Lysimachos", parent: "arsinoeI"},
+        {id: "berenikeII", name: "Berenike II", text: "Euergetis", spouse: "ptolemaiosIII"},
+        {id: "berenikeSyra", name: "Berenike", text: "Syra", parent: "arsinoeI"},
+        {id: "ptolemaiosIV", name: "PTOLEMAIOS IV", text: "Philopator", parent: "berenikeII", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_Δ΄_Φιλοπάτωρ"},
+        {id: "arsinoeIII", name: "Arsinoe III", text: "Philopator", spouse: "ptolemaiosIV"},
+        {id: "agathokleia", name: "Agathokleia", spouse: "ptolemaiosIV"},
+        {id: "alexandros", name: "Alexandros", parent: "berenikeII"},
+        {id: "magas", name: "Magas", parent: "berenikeII"},
+        {id: "berenike", name: "Berenike", parent: "berenikeII"},
+        {id: "ptolemaiosV", name: "PTOLEMAIOS V", text: "Epiphanes", parent: "arsinoeIII", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_Ε΄_Επιφανής"},
+        {id: "kleopatraI", name: "Kleopatra I", text: "Syra", spouse: "ptolemaiosV"},
+        {id: "kleopatraII", name: "KLEOPATRA II", text: "Philometor Soteira", parent: "kleopatraI", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Κλεοπάτρα_Β΄_της_Αιγύπτου"},
+        {id: "ptolemaiosVI", name: "PTOLEMAIOS VI", text: "Philometor", spouse: "kleopatraII", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_ΣΤ΄_Φιλομήτωρ"},
+        {id: "ptolemaiosVIII", name: "PTOLEMAIOS VIII", text: "Physcon", parent: "kleopatraI", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_Η΄_Φύσκων"},
+        {id: "eirene", name: "Eirene", spouse: "ptolemaiosVIII"},
+        {id: "ptolemaiosEupator", name: "Ptolemaios", text: "Eupator", parent: "ptolemaiosVI"},
+        {id: "kleopatraThea", name: "Kleopatra", text: "Thea", parent: "ptolemaiosVI"},
+        {id: "ptolemaiosVII", name: "Ptolemaios VII", text: "Neos Philopator", parent: "ptolemaiosVI"},
+        {id: "kleopatraIII", name: "KLEOPATRA III", parent: "ptolemaiosVI", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Κλεοπάτρα_Γ΄_της_Αιγύπτου"},
+        {id: "ptolemaiosMemphitis", name: "Ptolemaios", text: "Memphitis", parent: "kleopatraII"},
+        {id: "ptolemaiosApion", name: "Ptolemaios", text: "Apion", parent: "eirene"},
+        {id: "kleopatraTryphaena", name: "Kleopatra", text: "Tryphaena", parent: "kleopatraIII"},
+        {id: "ptolemaiosIX", name: "PTOLEMAIOS IX", text: "Lathyros", parent: "kleopatraIII", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_Θ΄_Λάθυρος"},
+        {id: "kleopatraIV", name: "Kleopatra IV", spouse: "ptolemaiosIX"},
+        {id: "kleopatraSelene", name: "Kleopatra", text: "Selene", parent: "kleopatraIII"},
+        {id: "ptolemaiosX", name: "PTOLEMAIOS X", text: "Alexandros", spouse: "kleopatraSelene", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_Ι΄_Αλέξανδρος"},
+        {id: "ptolemaiosCyprus", name: "Ptolemaios", text: "of Cyprus", parent: "kleopatraIV"},
+        {id: "ptolemaiosXII", name: "PTOLEMAIOS XII", text: "Auletes", parent: "kleopatraIV", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_ΙΒ΄_Αυλητής"},
+        {id: "berenikeIII", name: "BERENIKE III", text: "Philopator", parent: "ptolemaiosIX", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Βερενίκη_Γ΄_της_Αιγύπτου"},
+        {id: "ptolemaiosXI", name: "PTOLEMAIOS XI", text: "Alexandros", parent: "ptolemaiosX", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_ΙΑ΄_Αλέξανδρος_Β΄"},
+        {id: "kleopatraVTryphaena", name: "KLEOPATRA V", text: "Tryphaena", parent: "berenikeIII", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Κλεοπάτρα_Ε΄_της_Αιγύπτου"},
+        {id: "kleopatraVI", name: "KLEOPATRA VI", text: "Tryphaena", parent: "kleopatraVTryphaena", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Κλεοπάτρα_ΣΤ΄_της_Αιγύπτου"},
+        {id: "berenikeIV", name: "BERENIKE IV", text: "Epiphaneia", parent: "kleopatraVTryphaena", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Βερενίκη_Δ΄_της_Αιγύπτου"},
+        {id: "ptolemaiosXIII", name: "PTOLEMAIOS XIII", text: "Theos Philopator", parent: "kleopatraVTryphaena", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_ΙΓ΄_Θεός_Φιλοπάτωρ"},
+        {id: "kleopatraVII", name: "KLEOPATRA VII", text: "Thea Philopator", parent: "kleopatraVTryphaena", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Κλεοπάτρα_Ζ΄_της_Αιγύπτου"},
+        {id: "gaiusIuliusCaesar", name: "Gaius Iulius Caesar", spouse: "kleopatraVII"},
+        {id: "marcusAntonius", name: "Marcus Antonius", spouse: "kleopatraVII"},
+        {id: "ptolemaiosXIV", name: "PTOLEMAIOS XIV", text: "Philopator", parent: "kleopatraVTryphaena", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_ΙΔ΄_Φιλοπάτωρ"},
+        {id: "arsinoeIV", name: "ARSINOE IV", parent: "kleopatraVTryphaena", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Αρσινόη_Δ΄_της_Αιγύπτου"},
+        {id: "ptolemaiosXV", name: "PTOLEMAIOS XV", text: "Kaisar", parent: "gaiusIuliusCaesar", class: "pharaoh", url: "https://el.wikipedia.org/wiki/Πτολεμαίος_ΙΕ΄_Καισαρίων"},
+        {id: "alexandrosHelios", name: "Alexandros", text: "Helios", parent: "marcusAntonius"},
+        {id: "kleopatraSelene2", name: "Kleopatra", text: "Selene", parent: "marcusAntonius"},
+        {id: "jubaIIMauretania", name: "Juba II", text: "of Mauretania", spouse: "kleopatraSelene2"},
+        {id: "ptolemaiosPhiladelphos", name: "Ptolemaios", text: "Philadelphos", parent: "marcusAntonius"},
+        {id: "ptolemaiosMauretania", name: "Ptolemaios", text: "of Mauretania", parent: "jubaIIMauretania"},
+      ];
+      const links = [
+        {start: "arsinoeII", end: "ptolemaiosKeraunos", startDx: -5, y: 0.25, class: "dashed"},
+        {start: "arsinoeII", end: "ptolemaiosII", startDx: 5, y: 0.25, class: "dashed"},
+        {start: ["ptolemaiosIII", "berenikeII"], end: "arsinoeIII", type: "siblingDescent"},
+        {start: ["ptolemaiosV", "kleopatraI"], end: "ptolemaiosVI", type: "siblingDescent"},
+        {start: "kleopatraII", end: "ptolemaiosVIII", type: "closeUnion"},
+        {start: ["kleopatraII", "ptolemaiosVIII"], end: "ptolemaiosMemphitis", type: "descent", replace: true},
+        {start: "ptolemaiosVIII", end: "kleopatraIII", x: 0, y: 0.25},
+        {start: "kleopatraIII", end: "kleopatraIV", type: "siblingDescent"},
+        {start: "ptolemaiosIX", end: "kleopatraSelene", type: "closeUnion"},
+        {start: ["ptolemaiosIX", "kleopatraSelene"], end: "berenikeIII", type: "descent", replace: true},
+        {start: "kleopatraIII", end: "ptolemaiosX", type: "siblingDescent"},
+        {start: "berenikeIII", end: "ptolemaiosXI", type: "closeUnion"},
+        {start: "ptolemaiosX", end: "berenikeIII", startDx: 5, x: 0},
+        {start: "ptolemaiosXII", end: "kleopatraVTryphaena", x: 0, y: 0.25},
+        {start: "kleopatraVII", end: "ptolemaiosXIII", startDx: -5, y: 0.17, class: "dashed"},
+        {start: "kleopatraVII", end: "ptolemaiosXIV", startDx: 5, y: 0.17, class: "dashed"},
+      ];
+      const title = {text: "Lagid dynasty", x: 1100, y: 600, fontFamily: "Cinzel", fontSize: 50};
+      Lignage(document.getElementById("lignage"), nodes, {links, title, orient: "left", parentMargin: 50, cousinMargin: 30});
+    </script>
+  </body>
+</html>
